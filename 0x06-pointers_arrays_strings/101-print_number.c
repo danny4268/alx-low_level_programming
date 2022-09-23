@@ -1,35 +1,35 @@
+#include <stdio.h>
 #include "main.h"
-
 /**
- * print_number - print an integer, without using long, arrays, or pointers
- * @n: number to be printed
+ * print_number - prints a number
+ * @n: Input number
  */
 
 void print_number(int n)
 {
-	unsigned int tens, digit, positive = n;
-	double t_beg = 1;
+	int res, temp, expo;
 
-	if (n == 0)
-		_putchar('0');
+	expo = 1;
+/*Check negatives*/
+	if (n >= 0)
+		res = n * -1;
 	else
 	{
-		if (n < 0)
-		{
-			positive = n * -1;
-			_putchar('-');
-		}
+		res = n;
+		_putchar('-');
+	}
 
-		while (t_beg <= positive)
-			t_beg *= 10;
-		tens = t_beg / 10;
-
-		while (tens >= 1)
-		{
-			digit = positive / tens;
-			_putchar(digit + '0');
-			positive = (positive - (tens * digit));
-			tens /= 10;
-		}
+/*Initialize exponent variable*/
+	temp = res;
+	while (temp <= -10)
+	{
+		expo *= 10;
+		temp /= 10;
+	}
+/*Main */
+	while (expo >= 1)
+	{
+		_putchar(((res / expo) % 10) * -1 + '0');
+		expo /= 10;
 	}
 }
