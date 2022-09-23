@@ -32,4 +32,3 @@ void print_number(int n)
 			tens /= 10;
 		}
 	}
-}
